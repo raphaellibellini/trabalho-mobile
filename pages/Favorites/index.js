@@ -1,15 +1,22 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { Card, Button } from 'react-native-elements'
 import Constants from 'expo-constants';
 import { Feather } from '@expo/vector-icons';
 import MyCard from '../../components/MyCard';
+import { useNavigation } from '@react-navigation/native';
+import { Card, Button } from 'react-native-elements';
 
 export default function Favorites() {
+    const navigation = useNavigation();
+
+    function navigateToSkills(item) {
+        navigation.navigate('Skills', { item });
+    }
+
     return (
         <View style={{backgroundColor: '#EFEEF5'}}>
-            <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal:14, paddingTop: Constants.statusBarHeight + 20}}>
-                <TouchableOpacity onPress={() => {}}>
+            <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal:14, paddingTop: Constants.statusBarHeight + 20, paddingBottom: 20}}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Feather name="chevron-left" size={28} />
                 </TouchableOpacity>
                 <Text style={{fontWeight: 'bold', fontSize: 16}}>Meus Favoritos</Text>
@@ -28,7 +35,23 @@ export default function Favorites() {
                 showsVerticalScrollIndicator={false} //para ocultar a barrinha
                 contentContainerStyle={{ paddingBottom: 120 }}
                 renderItem={({item}) => (
-                    <MyCard item={item}/>
+                    <Card style={{padding: 30}}>
+                        <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 }}>{item.full_name}</Card.Title>
+                        <Card.Divider/>
+                        <Card.Title>{item.secret_name}</Card.Title>
+                        <Card.Image source={item.image}>
+                        </Card.Image>
+                        <View style={{marginTop: 16 , flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <Button
+                            buttonStyle={{paddingHorizontal: 24}}
+                            onPress={() => navigateToSkills(item)}
+                            type= "outline"
+                            title='Ficha Técnica' />
+                        <Button
+                            buttonStyle={{paddingHorizontal: 32}}
+                            title='Favoritar' />
+                        </View>
+                    </Card>
                 )}
             />
         </View>
