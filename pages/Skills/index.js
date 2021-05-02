@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import MyCardDetailed from '../../components/MyCardDetailed';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import { Feather } from '@expo/vector-icons';

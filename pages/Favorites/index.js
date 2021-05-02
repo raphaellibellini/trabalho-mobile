@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import { Feather } from '@expo/vector-icons';
-import MyCard from '../../components/MyCard';
 import { useNavigation } from '@react-navigation/native';
 import { Card, Button } from 'react-native-elements';
 
