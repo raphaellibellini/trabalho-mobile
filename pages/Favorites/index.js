@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import Constants from 'expo-constants';
-import { Feather } from '@expo/vector-icons';
+import { View, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Card, Button } from 'react-native-elements';
+import Header from './../../components/Header';
 
 export default function Favorites() {
     const navigation = useNavigation();
@@ -14,16 +13,7 @@ export default function Favorites() {
 
     return (
         <View style={{backgroundColor: '#EFEEF5'}}>
-            <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal:14, paddingTop: Constants.statusBarHeight + 20, paddingBottom: 20}}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Feather name="chevron-left" size={28} />
-                </TouchableOpacity>
-                <Text style={{fontWeight: 'bold', fontSize: 16}}>Meus Favoritos</Text>
-                <TouchableOpacity onPress={() => {}}>
-                    <Feather name="log-out" size={28} />
-                </TouchableOpacity>
-            </View>
-        
+            <Header headerTitle='Meus Favoritos'/>
             <FlatList
                 data={[
                 {id:0, full_name: 'Spider-Man', secret_name: 'Miles Morales', image: require('../../images/miles.jpg')},
