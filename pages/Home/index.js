@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, View} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import {Button, Input, Icon, Card} from 'react-native-elements';
@@ -8,6 +8,7 @@ import Header from './../../components/Header';
 export default function Home() {
     const navigation = useNavigation();
     const route = useRoute();
+    const [list, setList] = useState(null);
 
     function navigateToSkills(item) {
         navigation.navigate('Skills', { item });
@@ -15,6 +16,15 @@ export default function Home() {
 
     function navigateToFavorites() {
         navigation.navigate('Favorites');
+    }
+
+    function carregarDados(){
+        let data = [
+             {id:0, full_name: 'Spider-Man', secret_name: 'Miles Morales', image: require('../../images/miles.jpg')},
+             {id:1, full_name: 'Batman', secret_name: 'Bruce Wayne', image: require('../../images/bruceWayne.jpeg')},
+             {id:2, full_name: 'Ms. Marvel', secret_name: 'Kamala Khan', image: require('../../images/kamalaKhan.jpg')}
+         ]
+        setList(data);
     }
 
     return (
@@ -36,6 +46,7 @@ export default function Home() {
                 <Button
                     buttonStyle={{}}
                     icon={<Icon name="search" size={25} color="#EFEEF5" />}
+                    onPress={()=> carregarDados()}
                 >
                 </Button>
             </View>
@@ -50,13 +61,7 @@ export default function Home() {
                 />
             </View>
             <FlatList
-                data={
-                    [
-                        {id:0, full_name: 'Spider-Man', secret_name: 'Miles Morales', image: require('../../images/miles.jpg')},
-                        {id:1, full_name: 'Batman', secret_name: 'Bruce Wayne', image: require('../../images/bruceWayne.jpeg')},
-                        {id:2, full_name: 'Ms. Marvel', secret_name: 'Kamala Khan', image: require('../../images/kamalaKhan.jpg')}
-                    ]
-                }
+                data = {list}
                 keyExtractor={item => String(item.id)} //para que cada elemento tenha uma chave unica
                 showsVerticalScrollIndicator={false} //para ocultar a barrinha
                 contentContainerStyle={{ paddingBottom: 260 }}
