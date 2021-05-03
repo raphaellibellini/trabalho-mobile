@@ -7,13 +7,17 @@ import { useNavigation } from '@react-navigation/native';
 export default function Header({headerTitle}) {
     const navigation = useNavigation();
 
+    function navigateToLogin(){
+        navigation.navigate("Login")
+    }
+
     return (
         <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal:14, paddingTop: Constants.statusBarHeight + 20, paddingBottom: 20}}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Feather name="chevron-left" size={28} />
             </TouchableOpacity>
             <Text style={{fontWeight: 'bold', fontSize: 16}}>{headerTitle}</Text>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => navigateToLogin()}>
                 <Feather name="log-out" size={28} />
             </TouchableOpacity>
         </View>
