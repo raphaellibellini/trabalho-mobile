@@ -20,7 +20,7 @@ export default function Home() {
     return (
         <View style={{backgroundColor: '#EFEEF5'}}>
             <Header headerTitle='Home'/>
-            <View style={{flexDirection: 'row', justifyContent:"center", marginHorizontal:30}}>
+            <View style={{flexDirection: 'row', justifyContent:"center", marginHorizontal:30, marginTop: 20}}>
                 <Input
                     containerStyle={{}}
                     disabledInputStyle={{ background: "#ddd" }}
@@ -39,7 +39,7 @@ export default function Home() {
                 >
                 </Button>
             </View>
-            <View style={{marginHorizontal: 15, marginVertical:15}}>
+            <View style={{marginHorizontal: 15, marginVertical:8}}>
                 <Button
                     buttonStyle={{}}
                     titleStyle={{}}
@@ -59,7 +59,7 @@ export default function Home() {
                 }
                 keyExtractor={item => String(item.id)} //para que cada elemento tenha uma chave unica
                 showsVerticalScrollIndicator={false} //para ocultar a barrinha
-                contentContainerStyle={{ paddingBottom: 120 }}
+                contentContainerStyle={{ paddingBottom: 260 }}
                 renderItem={({item}) => (
                     <Card style={{padding: 30}}>
                         <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 }}>{item.full_name}</Card.Title>
