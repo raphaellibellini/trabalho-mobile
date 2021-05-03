@@ -20,39 +20,35 @@ export default function Home() {
     return (
         <View style={{backgroundColor: '#EFEEF5'}}>
             <Header headerTitle='Home'/>
-
-            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <Button
-                    buttonStyle={{paddingHorizontal: 20}}
-                    type={"outline"}
-                    title={"  Favoritos"}
-                    onPress={()=> navigateToFavorites()}
-                    icon={<Icon name="star" size={25} color="#2288DD" />}
+            <View style={{flexDirection: 'row', justifyContent:"center", marginHorizontal:30}}>
+                <Input
+                    containerStyle={{}}
+                    disabledInputStyle={{ background: "#ddd" }}
+                    inputContainerStyle={{ }}
+                    errorStyle={{}}
+                    errorProps={{}}
+                    inputStyle={{}}
+                    label=""
+                    labelStyle={{color: '#2288DD'}}
+                    labelProps={{}}
+                    placeholder={"Digite o nome do herói"}
                 />
-            </View>
-
-            <View style={{flexDirection: 'row', justifyContent:'center', marginTop: 15}}>
-                <View>
-                    <Input
-                        containerStyle={{}}
-                        disabledInputStyle={{ background: "#ddd" }}
-                        inputContainerStyle={{ }}
-                        errorStyle={{}}
-                        errorProps={{}}
-                        inputStyle={{}}
-                        label=""
-                        labelStyle={{color: '#2288DD'}}
-                        labelProps={{}}
-                        placeholder={"Digite o nome do herói"}
-                    />
-                </View>
                 <Button
                     buttonStyle={{}}
                     icon={<Icon name="search" size={25} color="#EFEEF5" />}
                 >
                 </Button>
             </View>
-
+            <View style={{marginHorizontal: 15, marginVertical:15}}>
+                <Button
+                    buttonStyle={{}}
+                    titleStyle={{}}
+                    title={"  Favoritos"}
+                    type={"outline"}
+                    onPress={()=> navigateToFavorites()}
+                    icon={<Icon name="star" size={25} color="#2288DD" />}
+                />
+            </View>
             <FlatList
                 data={
                     [
