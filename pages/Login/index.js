@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, Text, View, Image} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import {Button, Input, Icon, Card} from 'react-native-elements';
 import Header from './../../components/Header';
@@ -19,7 +19,10 @@ export default function Login() {
 
     return (
         <View style={{backgroundColor: '#EFEEF5', marginTop: 100}}>
-
+            <Image
+                source={require('../../assets/logoPequeno2x.png')}
+                style={{justifyContent:'center', marginHorizontal:70, marginBottom: 30}}
+            ></Image>
             <Card style={{}}>
                 <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 }}>Login</Card.Title>
                 <Card.Divider/>
