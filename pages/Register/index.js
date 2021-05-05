@@ -3,7 +3,7 @@ import {FlatList, Image, Text, View} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import {Button, Input, Icon, Card} from 'react-native-elements';
 import Header from './../../components/Header';
-
+import logoImg from './../../logos/logo.png';
 
 export default function Register() {
     const navigation = useNavigation();
@@ -16,7 +16,7 @@ export default function Register() {
     return (
         <View style={{backgroundColor: '#EFEEF5', marginTop: 100}}>
             <Image
-                source={require('../../assets/logoPequeno2x.png')}
+                source={logoImg}
                 style={{justifyContent:'center', marginHorizontal:70, marginBottom: 30}}
             ></Image>
             <Card style={{}}>
