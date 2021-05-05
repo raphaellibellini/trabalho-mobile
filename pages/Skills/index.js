@@ -13,7 +13,7 @@ export default function Skills() {
     return (
         <View>
             <Header headerTitle='Ficha Técnica'/>
-            <Card style={{padding: 30, paddingTop: 32}}>
+            <Card style={{padding: 30}}>
                 <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 }}>{item.full_name}</Card.Title>
                 <Card.Divider/>
                 <Card.Title>{item.secret_name}</Card.Title>
@@ -48,7 +48,7 @@ export default function Skills() {
                     <Text>Combate</Text>
                     <Text style={{fontWeight: 'bold', color: '#2288DD'}}>90</Text>
                 </View>
-                <View style={{marginTop: 24}}>
+                <View style={{marginTop: 20}}>
                     <Button
                         title='Excluir Favorito'
                         type='outline'

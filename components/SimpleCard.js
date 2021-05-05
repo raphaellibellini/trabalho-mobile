@@ -15,7 +15,7 @@ export default function SimpleCard({props}) {
     }
 
     return (
-        <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal:14, paddingTop: Constants.statusBarHeight + 20, paddingBottom: 20}}>
+        <View >
             <Card style={{padding: 30}}>
                 <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 }}>{item.full_name}</Card.Title>
                 <Card.Divider/>

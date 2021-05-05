@@ -37,7 +37,6 @@ export default function Login() {
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
                     placeholder={"Email"}
-                    placeholderTextColor={'#2288DD'}
                 ></Input>
                 <Input
                     containerStyle={{}}
@@ -50,7 +49,6 @@ export default function Login() {
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
                     placeholder={"Senha"}
-                    placeholderTextColor={'#2288DD'}
                 ></Input>
                 <Button
                     buttonStyle={{marginTop: 10, marginLeft:10, marginRight:10}}
