@@ -6,6 +6,7 @@ import Skills from './pages/Skills';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import SharedWithMe from './pages/SharedWithMe';
 
 const AppStack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function Routes() {
                 <AppStack.Screen name="Home" component={Home} />
                 <AppStack.Screen name="Favorites" component={Favorites} />
                 <AppStack.Screen name="Skills" component={Skills} />
+                <AppStack.Screen name="SharedWithMe" component={SharedWithMe} />
             </AppStack.Navigator>
         </NavigationContainer>
     )

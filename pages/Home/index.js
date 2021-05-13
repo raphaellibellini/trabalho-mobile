@@ -19,6 +19,10 @@ export default function Home() {
         navigation.navigate('Favorites');
     }
 
+    function navigateToSharedWithMe() {
+        navigation.navigate('SharedWithMe');
+    }
+
     function carregarDados(){
         let data = [
              {id:0, full_name: 'Spider-Man', secret_name: 'Miles Morales', image: require('../../images/miles.jpg')},
@@ -51,14 +55,22 @@ export default function Home() {
                 >
                 </Button>
             </View>
-            <View style={{marginHorizontal: 15, marginVertical:8}}>
+            <View style={{marginHorizontal: 15, marginVertical:8, flexDirection:'row', justifyContent:'space-between'}}>
                 <Button
-                    buttonStyle={{}}
+                    buttonStyle={{width:150}}
                     titleStyle={{}}
                     title={"  Favoritos"}
                     type={"outline"}
                     onPress={()=> navigateToFavorites()}
                     icon={<Icon name="star" size={25} color="#2288DD" />}
+                />
+                <Button
+                    buttonStyle={{width:150}}
+                    titleStyle={{}}
+                    title={"  Recebidos"}
+                    type={"outline"}
+                    onPress={()=> navigateToSharedWithMe()}
+                    icon={<Icon name="mail" size={25} color="#2288DD" />}
                 />
             </View>
             <FlatList

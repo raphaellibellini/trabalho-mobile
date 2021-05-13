@@ -56,6 +56,18 @@ export default function Register() {
                     label=""
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
+                    placeholder={"Nome de usuário"}
+                ></Input>
+                <Input
+                    containerStyle={{}}
+                    disabledInputStyle={{ background: "#ddd" }}
+                    inputContainerStyle={{ }}
+                    errorStyle={{}}
+                    errorProps={{}}
+                    inputStyle={{}}
+                    label=""
+                    labelStyle={{color: '#2288DD'}}
+                    labelProps={{}}
                     placeholder={"Senha"}
                 ></Input>
                 <Button
