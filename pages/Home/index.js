@@ -4,11 +4,14 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import {Button, Input, Icon, Card} from 'react-native-elements';
 import Header from './../../components/Header';
 import SimpleCard from "../../components/SimpleCard";
+import Api from '../../service/api'
+import axios from 'axios';
 
 
 export default function Home() {
     const navigation = useNavigation();
     const route = useRoute();
+    const [searchText, setSearchText] = useState(null)
     const [list, setList] = useState(null);
     const [user, setUser] = useState(route.params.user)
 
@@ -25,12 +28,27 @@ export default function Home() {
     }
 
     function carregarDados(){
-        let data = [
-             {id:0, full_name: 'Spider-Man', secret_name: 'Miles Morales', image: require('../../images/miles.jpg')},
-             {id:1, full_name: 'Batman', secret_name: 'Bruce Wayne', image: require('../../images/bruceWayne.jpeg')},
-             {id:2, full_name: 'Ms. Marvel', secret_name: 'Kamala Khan', image: require('../../images/kamalaKhan.jpg')}
-         ]
-        setList(data);
+        axios
+            .get(Api.getUrl(`/herois/buscar-por-nome-api/${searchText}`))
+            .then((response)=>{
+                let data = response.data
+                let i=1
+                data.forEach(element => {
+                    element.id = i
+                    i++
+                });
+                setList(data);
+            })
+            .catch((err)=>{
+                // setMessage("Usuário e/ou senha inválidos!")
+                console.log(err);
+            })
+        // let data = [
+        //      {id:0, full_name: 'Spider-Man', secret_name: 'Miles Morales', image: require('../../images/miles.jpg')},
+        //      {id:1, full_name: 'Batman', secret_name: 'Bruce Wayne', image: require('../../images/bruceWayne.jpeg')},
+        //      {id:2, full_name: 'Ms. Marvel', secret_name: 'Kamala Khan', image: require('../../images/kamalaKhan.jpg')}
+        //  ]
+        // setList(data);
     }
 
     return (
@@ -48,6 +66,8 @@ export default function Home() {
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
                     placeholder={"Digite o nome do herói"}
+                    defaultValue={searchText}
+                    onChangeText={(searchText)=>setSearchText(searchText)}
                 />
                 <Button
                     buttonStyle={{}}

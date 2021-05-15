@@ -1,16 +1,40 @@
 import React from 'react';
-import {FlatList, Image, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import {Button, Input, Icon, Card} from 'react-native-elements';
-import Header from './../../components/Header';
 import logoImg from './../../logos/logo.png';
+import Api from '../../service/api'
+import axios from 'axios';
 
 export default function Register() {
     const navigation = useNavigation();
     const route = useRoute();
+    const [message, setMessage] = React.useState("")
+    const [name, setName] = React.useState("")
+    const [email, setEmail] = React.useState("")
+    const [userName, setUserName] = React.useState("")
+    const [password, setPassword] = React.useState("")
 
-    function navigateToHome(){
-        navigation.navigate("Home")
+    function navigateToLogin(){
+        navigation.navigate("Login")
+    }
+
+    function cadastrar(){
+        axios
+            .post(Api.getUrl('/usuario/cadastrar'),
+            {
+                email: email,
+                senha: password,
+                nomeCompleto: name,
+                nomeUsuario: userName
+            })
+            .then(()=>{
+                navigateToLogin();
+            })
+            .catch((err)=>{
+                setMessage("Usuário e/ou email já existentes!")
+                console.log(err);
+            })
     }
 
     return (
@@ -33,6 +57,8 @@ export default function Register() {
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
                     placeholder={"Nome completo"}
+                    defaultValue={name}
+                    onChangeText={(name)=>setName(name)}
                 ></Input>
                 <Input
                     containerStyle={{}}
@@ -45,6 +71,8 @@ export default function Register() {
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
                     placeholder={"Email"}
+                    defaultValue={email}
+                    onChangeText={(email)=>setEmail(email)}
                 ></Input>
                 <Input
                     containerStyle={{}}
@@ -57,6 +85,8 @@ export default function Register() {
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
                     placeholder={"Nome de usuário"}
+                    defaultValue={userName}
+                    onChangeText={(userName)=>setUserName(userName)}
                 ></Input>
                 <Input
                     containerStyle={{}}
@@ -69,10 +99,16 @@ export default function Register() {
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
                     placeholder={"Senha"}
+                    defaultValue={password}
+                    onChangeText={(password)=>setPassword(password)}
                 ></Input>
+                <Text
+                    style={{paddingHorizontal:15, marginTop: 15, color:"red"}}
+                >{message}
+                </Text>
                 <Button
                     buttonStyle={{marginTop: 10, marginLeft:10, marginRight:10}}
-                    onPress={() => navigateToHome()}
+                    onPress={() => cadastrar()}
                     title='Salvar' />
 
                 <Button

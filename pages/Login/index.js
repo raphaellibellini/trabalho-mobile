@@ -88,7 +88,8 @@ export default function Login() {
                     title='Entrar' />
                 <Text
                     style={{paddingHorizontal:15, marginTop: 15, color:"red"}}
-                >{message}</Text>
+                >{message}
+                </Text>
                 <Text
                     style={{paddingHorizontal:15, marginTop: 15}}
                 >Ainda não tem uma conta?

@@ -18,19 +18,19 @@ export default function SimpleCard({props}) {
         <View >
             <Card style={{padding: 30}}>
                 <View style={{flexDirection:'row'}}>
-                    <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 , marginLeft:110}}>{item.full_name}</Card.Title>
+                    <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 , marginLeft:80}}>{item.nome}</Card.Title>
                     <Button
-                        buttonStyle={{width:10, height:15, borderColor:'white', marginLeft:60, marginTop:5}}
+                        buttonStyle={{borderColor:'white',marginTop:-8, alignSelf:"flex-end"}}
                         titleStyle={{}}
                         title={""}
                         type={"outline"}
-                        onPress={()=> navigateToSharedWithMe()}
+                        //onPress={}
                         icon={<Icon name="share" size={25} color="#2288DD" />}
                     />
                 </View>
                 <Card.Divider/>
-                <Card.Title>{item.secret_name}</Card.Title>
-                <Card.Image source={item.image}>
+                <Card.Title>{item.alterEgo}</Card.Title>
+                <Card.Image source={{uri:item.urlImagem}}>
                 </Card.Image>
                 <View style={{marginTop: 16 , flexDirection: 'row', justifyContent: 'space-between'}}>
                     <Button
