@@ -10,6 +10,7 @@ export default function Home() {
     const navigation = useNavigation();
     const route = useRoute();
     const [list, setList] = useState(null);
+    const [user, setUser] = useState(route.params.user)
 
     function navigateToSkills(item) {
         navigation.navigate('Skills', { item });
