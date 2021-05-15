@@ -28,6 +28,7 @@ export default function Home() {
     }
 
     function carregarDados(){
+        setList([])
         axios
             .get(Api.getUrl(`/herois/buscar-por-nome-api/${searchText}`))
             .then((response)=>{
