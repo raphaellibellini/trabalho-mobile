@@ -1,7 +1,7 @@
 class Api {
   constructor() {
-    this.baseUrl = "http://localhost:9090/myhero";
-    //this.baseUrl = "https://trabalho-mobile-backend.herokuapp.com/myhero";
+    //this.baseUrl = "http://localhost:9090/myhero";
+    this.baseUrl = "https://trabalho-mobile-backend.herokuapp.com/myhero";
   }
 
   getUrl(path) {
