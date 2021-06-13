@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Card, Button } from 'react-native-elements';
 import Header from './../../components/Header';
-
+import If from '../../components/If';
 
 export default function Skills() {
     const navigation = useNavigation();
@@ -11,13 +11,13 @@ export default function Skills() {
     const item = route.params.item;
 
     return (
-        <View>
+        <View style={{marginBottom:60}}>
             <Header headerTitle='Ficha Técnica'/>
             <Card style={{padding: 30}}>
-                <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 }}>{item.nome}</Card.Title>
+                <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20, marginBottom: 16, marginLeft: 8, textAlign: 'left' }}>{item.nome}</Card.Title>
                 <Card.Divider/>
-                <Card.Title>{item.alterEgo}</Card.Title>
-                <Card.Image source={{uri:item.urlImagem}}>
+                <Card.Title style={{marginLeft:8, textAlign: 'left'}}>{item.alterEgo}</Card.Title>
+                <Card.Image style={{height:300}} source={{uri:item.urlImagem}}>
                 </Card.Image>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginVertical: 8}}>
                     <Text>Altura: {item.altura}</Text>
@@ -47,13 +47,6 @@ export default function Skills() {
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 16}}>
                     <Text>Combate</Text>
                     <Text style={{fontWeight: 'bold', color: '#2288DD'}}>{item.combate}</Text>
-                </View>
-                <View style={{marginTop: 20}}>
-                    <Button
-                        title='Excluir Favorito'
-                        type='outline'
-                        onPress={() => {}} 
-                    />
                 </View>
             </Card>
         </View>

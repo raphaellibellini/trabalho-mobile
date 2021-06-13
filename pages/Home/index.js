@@ -19,8 +19,8 @@ export default function Home() {
         navigation.navigate('Skills', { item });
     }
 
-    function navigateToFavorites() {
-        navigation.navigate('Favorites');
+    function navigateToFavorites(user) {
+        navigation.navigate('Favorites', { user });
     }
 
     function navigateToSharedWithMe() {
@@ -83,7 +83,7 @@ export default function Home() {
                     titleStyle={{}}
                     title={"  Favoritos"}
                     type={"outline"}
-                    onPress={()=> navigateToFavorites()}
+                    onPress={()=> navigateToFavorites(user)}
                     icon={<Icon name="star" size={25} color="#2288DD" />}
                 />
                 <Button
@@ -101,10 +101,9 @@ export default function Home() {
                 showsVerticalScrollIndicator={false} //para ocultar a barrinha
                 contentContainerStyle={{ paddingBottom: 260 }}
                 renderItem={({item}) => (
-                    <SimpleCard props={item}></SimpleCard>
+                    <SimpleCard props={{item, user}}></SimpleCard>
                 )}
             />
-
         </View>
     )
 }

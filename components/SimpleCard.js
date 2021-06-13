@@ -1,26 +1,63 @@
 import React, {useState} from 'react';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import Constants from 'expo-constants';
 import {Button, Card, Icon} from "react-native-elements";
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation, useRoute} from "@react-navigation/native";
+import If from '../components/If';
+import axios from 'axios';
+import Api from '../service/api';
 
 export default function SimpleCard({props}) {
 
     const navigation = useNavigation();
+    const route = useRoute();
 
-    const [item, setItem] = useState(props)
+    const [user, setUser] = useState(props.user)
+    const [item, setItem] = useState(props.item)
 
     function navigateToSkills(item){
         navigation.navigate('Skills', { item });
     }
 
+    function favoritar(id){
+        console.log('user', user)
+        console.log('item', item);
+        axios.post(Api.getUrl(`/favoritos/favoritar`), 
+            {
+                usuarioId: user.id,
+                idHeroiApi: item.idApi
+            }
+        ).then((response) => {console.log(response)
+            response.data ? Alert.alert(
+                "Salvo em Favoritos",
+                "Herói salvo com sucesso nos favoritos",
+                [
+                  { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+              ) : Alert.alert(
+                "Erro ao salvar",
+                "Erro ao salvar herói nos favoritos",
+                [
+                  { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+              )
+        })
+        .catch((err) => Alert.alert(
+            "Erro ao salvar",
+            "Erro ao salvar herói nos favoritos",
+            [
+              { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+          ));
+    }
+
     return (
         <View >
             <Card style={{padding: 30}}>
-                <View style={{flexDirection:'row'}}>
-                    <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 , marginLeft:80}}>{item.nome}</Card.Title>
+                <View style={{flexDirection:'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20 , marginLeft:8, marginBottom: 0}}>{item.nome}</Card.Title>
                     <Button
-                        buttonStyle={{borderColor:'white',marginTop:-8, alignSelf:"flex-end"}}
+                        buttonStyle={{borderColor:'white'}}
                         titleStyle={{}}
                         title={""}
                         type={"outline"}
@@ -29,8 +66,8 @@ export default function SimpleCard({props}) {
                     />
                 </View>
                 <Card.Divider/>
-                <Card.Title>{item.alterEgo}</Card.Title>
-                <Card.Image source={{uri:item.urlImagem}}>
+                <Card.Title style={{marginLeft:8, textAlign: 'left'}}>{item.alterEgo}</Card.Title>
+                <Card.Image style={{height:300}} source={{uri:item.urlImagem}}>
                 </Card.Image>
                 <View style={{marginTop: 16 , flexDirection: 'row', justifyContent: 'space-between'}}>
                     <Button
@@ -38,9 +75,19 @@ export default function SimpleCard({props}) {
                         onPress={() => navigateToSkills(item)}
                         type= "outline"
                         title='Ficha Técnica' />
-                    <Button
-                        buttonStyle={{paddingHorizontal: 32}}
-                        title='Favoritar' />
+                    <If condition={route.name === 'Favorites'}>
+                        <Button
+                            buttonStyle={{paddingHorizontal: 32}}
+                            title='Excluir' 
+                            //onPress={() => favoritar(item.id)} 
+                        />
+                    </If>
+                    <If condition={route.name !== 'Favorites'}>
+                        <Button
+                            buttonStyle={{paddingHorizontal: 32}}
+                            title='Favoritar' 
+                            onPress={() => favoritar(item.id)} />
+                    </If>
                 </View>
             </Card>
         </View>
