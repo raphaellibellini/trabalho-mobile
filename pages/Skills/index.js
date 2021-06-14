@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Card, Button } from 'react-native-elements';
 import Header from './../../components/Header';
@@ -11,9 +11,9 @@ export default function Skills() {
     const item = route.params.item;
 
     return (
-        <View style={{marginBottom:60}}>
+        <ScrollView contentContainerStyle={{paddingBottom: 32}}>
             <Header headerTitle='Ficha Técnica'/>
-            <Card style={{padding: 30}}>
+            <Card>
                 <Card.Title style={{color: '#2288DD', fontWeight: 'bold', fontSize:20, marginBottom: 16, marginLeft: 8, textAlign: 'left' }}>{item.nome}</Card.Title>
                 <Card.Divider/>
                 <Card.Title style={{marginLeft:8, textAlign: 'left'}}>{item.alterEgo}</Card.Title>
@@ -49,6 +49,6 @@ export default function Skills() {
                     <Text style={{fontWeight: 'bold', color: '#2288DD'}}>{item.combate}</Text>
                 </View>
             </Card>
-        </View>
+        </ScrollView>
     )
 }

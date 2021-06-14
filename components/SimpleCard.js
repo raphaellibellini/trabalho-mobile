@@ -3,9 +3,9 @@ import { View, Alert } from 'react-native';
 import Constants from 'expo-constants';
 import {Button, Card, Icon} from "react-native-elements";
 import {useNavigation, useRoute} from "@react-navigation/native";
-import If from '../components/If';
 import axios from 'axios';
 import Api from '../service/api';
+import If from '../components/If';
 
 export default function SimpleCard({props}) {
 
@@ -20,8 +20,6 @@ export default function SimpleCard({props}) {
     }
 
     function favoritar(id){
-        console.log('user', user)
-        console.log('item', item);
         axios.post(Api.getUrl(`/favoritos/favoritar`), 
             {
                 usuarioId: user.id,
@@ -77,16 +75,17 @@ export default function SimpleCard({props}) {
                         title='Ficha Técnica' />
                     <If condition={route.name === 'Favorites'}>
                         <Button
-                            buttonStyle={{paddingHorizontal: 32}}
-                            title='Excluir' 
-                            //onPress={() => favoritar(item.id)} 
-                        />
+                            buttonStyle={{paddingHorizontal: 48, marginLeft:6}}
+                            title='Excluir'
+                            //onPress={() => excluir()} 
+                            />
                     </If>
                     <If condition={route.name !== 'Favorites'}>
                         <Button
                             buttonStyle={{paddingHorizontal: 32}}
-                            title='Favoritar' 
-                            onPress={() => favoritar(item.id)} />
+                            title='Favoritar'
+                            onPress={() => favoritar(item.id)} 
+                            />
                     </If>
                 </View>
             </Card>
