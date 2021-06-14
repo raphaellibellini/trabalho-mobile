@@ -1,0 +1,19 @@
+
+>
+service/api.js,7\4\74c3d74e301ae13f6905d538ec5328ed1199115d
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+8
+app.json,6\5\65596286f14dbaba6a5081a2edaae69700cc3c3b
+H
+pages/Favorites/index.js,4\c\4cc899afc90ec10d2bea9093789ed25786cfaf24
+D
+pages/Login/index.js,d\c\dce614771fd232b410b6d93114526fe503ba3bde
+G
+pages/Register/index.js,a\b\ab2c554e5f1ebb8f7ec1c24074fa56f21f72acdb
+K
+pages/SharedWithMe/index.js,b\8\b840e718c14f22c80007558188f5b34e51fea0ab
+H
+components/SimpleCard.js,8\9\89d0bd8a824e3302e765b9004365d845a71192cd
+E
+pages/Skills/index.js,8\b\8be872364e31dbfb259aee86ff0f37808635b1f6
