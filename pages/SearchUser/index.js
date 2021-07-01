@@ -27,7 +27,7 @@ export default function SearchUser() {
                     element.id = i
                     i++
                 });
-                console.log(data)
+                data = data.filter(item=>item.usuario != user.usuario)
                 setList(data);
             })
             .catch((err)=>{
