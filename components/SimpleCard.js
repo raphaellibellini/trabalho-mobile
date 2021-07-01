@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { View, Alert } from 'react-native';
-import Constants from 'expo-constants';
-import { Button, Card, Icon } from "react-native-elements";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import React, {useState} from 'react';
+import {Alert, View} from 'react-native';
+import {Button, Card, Icon} from "react-native-elements";
+import {useNavigation, useRoute} from "@react-navigation/native";
 import axios from 'axios';
 import Api from '../service/api';
 import If from '../components/If';
@@ -21,6 +20,10 @@ export default function SimpleCard({ props }) {
 
     function navigateToHome(user) {
         navigation.navigate('Home', { user });
+    }
+
+    function navigateToSearchUser() {
+        navigation.navigate('SearchUser', { user, item });
     }
 
     function favoritar(id) {
@@ -94,7 +97,7 @@ export default function SimpleCard({ props }) {
                         titleStyle={{}}
                         title={""}
                         type={"outline"}
-                        //onPress={}
+                        onPress={()=> navigateToSearchUser()}
                         icon={<Icon name="share" size={25} color="#2288DD" />}
                     />
                 </View>
@@ -123,6 +126,11 @@ export default function SimpleCard({ props }) {
                         />
                     </If>
                 </View>
+
+                <If condition={route.name == 'SharedWithMe'}>
+                    <Card.Divider></Card.Divider>
+                    <Card.Title style={{ marginLeft: 8, textAlign: 'left' , fontSize: 10}}>{`Compartilhado por ${item.usuarioEnvioNome} em ${item.dataOperacao}`}</Card.Title>
+                </If>
             </Card>
         </View>
     )

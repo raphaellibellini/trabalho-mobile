@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import SharedWithMe from './pages/SharedWithMe';
+import SearchUser from "./pages/SearchUser";
 
 const AppStack = createStackNavigator();
 
@@ -22,6 +23,7 @@ export default function Routes() {
                 <AppStack.Screen name="Favorites" component={Favorites} />
                 <AppStack.Screen name="Skills" component={Skills} />
                 <AppStack.Screen name="SharedWithMe" component={SharedWithMe} />
+                <AppStack.Screen name="SearchUser" component={SearchUser} />
             </AppStack.Navigator>
         </NavigationContainer>
     )

@@ -10,4 +10,4 @@ class Api {
   }
 }
 
-export default (new Api()); // singleton object
+export default (new Api()); // singleton

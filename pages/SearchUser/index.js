@@ -1,36 +1,25 @@
 import React, {useState} from 'react';
 import {FlatList, View} from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {Button, Icon, Input} from 'react-native-elements';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import {Button, Input, Icon, Card} from 'react-native-elements';
 import Header from './../../components/Header';
-import SimpleCard from "../../components/SimpleCard";
+import UserCard from '../../components/UserCard'
 import Api from '../../service/api'
 import axios from 'axios';
 
 
-export default function Home() {
+export default function SearchUser() {
     const navigation = useNavigation();
     const route = useRoute();
     const [searchText, setSearchText] = useState(null)
     const [list, setList] = useState(null);
     const [user, setUser] = useState(route.params.user)
-
-    function navigateToSkills(item) {
-        navigation.navigate('Skills', { item });
-    }
-
-    function navigateToFavorites(user) {
-        navigation.navigate('Favorites', { user });
-    }
-
-    function navigateToSharedWithMe() {
-        navigation.navigate('SharedWithMe', { user });
-    }
+    const [hero, setHero] = useState(route.params.item)
 
     function carregarDados(){
-        setList([])
+        setList(null)
         axios
-            .get(Api.getUrl(`/herois/buscar-por-nome-api/${searchText}`))
+            .get(Api.getUrl(`/usuario/buscar/${searchText}`))
             .then((response)=>{
                 let data = response.data
                 let i=1
@@ -38,6 +27,7 @@ export default function Home() {
                     element.id = i
                     i++
                 });
+                console.log(data)
                 setList(data);
             })
             .catch((err)=>{
@@ -60,33 +50,13 @@ export default function Home() {
                     label=""
                     labelStyle={{color: '#2288DD'}}
                     labelProps={{}}
-                    placeholder={"Digite o nome do herói"}
+                    placeholder={"Digite o nome do usuário"}
                     defaultValue={searchText}
-                    onChangeText={(searchText)=>setSearchText(searchText)}
-                />
-                <Button
-                    buttonStyle={{}}
-                    icon={<Icon name="search" size={25} color="#EFEEF5" />}
-                    onPress={()=> carregarDados()}
-                >
-                </Button>
-            </View>
-            <View style={{marginHorizontal: 15, marginVertical:8, flexDirection:'row', justifyContent:'space-between'}}>
-                <Button
-                    buttonStyle={{width:150}}
-                    titleStyle={{}}
-                    title={"  Favoritos"}
-                    type={"outline"}
-                    onPress={()=> navigateToFavorites(user)}
-                    icon={<Icon name="star" size={25} color="#2288DD" />}
-                />
-                <Button
-                    buttonStyle={{width:150}}
-                    titleStyle={{}}
-                    title={"  Recebidos"}
-                    type={"outline"}
-                    onPress={()=> navigateToSharedWithMe(user)}
-                    icon={<Icon name="mail" size={25} color="#2288DD" />}
+                    onChangeText={(searchText)=>{
+                            setSearchText(searchText)
+                            carregarDados()
+                        }
+                    }
                 />
             </View>
             <FlatList
@@ -95,7 +65,7 @@ export default function Home() {
                 showsVerticalScrollIndicator={false} //para ocultar a barrinha
                 contentContainerStyle={{ paddingBottom: 260 }}
                 renderItem={({item}) => (
-                    <SimpleCard props={{item, user}}></SimpleCard>
+                    <UserCard props={{hero, user, item}}></UserCard>
                 )}
             />
         </View>
