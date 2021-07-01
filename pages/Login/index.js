@@ -1,8 +1,7 @@
 import React from 'react';
-import {FlatList, Text, View, Image} from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import {Button, Input, Icon, Card} from 'react-native-elements';
-import Header from './../../components/Header';
+import {Image, Text, View} from 'react-native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {Button, Card, Input} from 'react-native-elements';
 import logoImg from './../../logos/logo.png';
 import Api from '../../service/api'
 import axios from 'axios';

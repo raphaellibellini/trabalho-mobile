@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { Card, Button } from 'react-native-elements';
+import {ScrollView, Text, View} from 'react-native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {Card} from 'react-native-elements';
 import Header from './../../components/Header';
-import If from '../../components/If';
 
 export default function Skills() {
     const navigation = useNavigation();

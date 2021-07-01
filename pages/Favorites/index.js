@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View} from 'react-native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import Header from './../../components/Header';
 import SimpleCard from "../../components/SimpleCard";
 import Api from '../../service/api'
