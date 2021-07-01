@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, View} from 'react-native';
 import {Button, Card, Icon} from "react-native-elements";
 import {useNavigation, useRoute} from "@react-navigation/native";
@@ -13,6 +13,13 @@ export default function UserCard({ props }) {
     const [user] = useState(props.user)
     const [hero] = useState(props.hero)
     const [userReceive] = useState(props.item)
+    const [disabled, setDisabled] = useState(false)
+
+    useEffect(() => {
+        if(user.nome == userReceive.nome){
+            setDisabled(true);
+        }
+    },[]);
 
     function navigateToHome(user) {
         navigation.navigate('Home', { user });
@@ -20,9 +27,6 @@ export default function UserCard({ props }) {
 
 
     function compartilhar() {
-        // console.log(JSON.stringify(user))
-        // console.log(JSON.stringify(userReceive))
-        // console.log(JSON.stringify(hero))
         axios
             .post(Api.getUrl('/compartilhamento/compartilhar'),
                 {
@@ -64,6 +68,8 @@ export default function UserCard({ props }) {
                         type={"outline"}
                         onPress={()=> compartilhar()}
                         icon={<Icon name="send" size={25} color="#2288DD" />}
+                        disabled={disabled}
+                        disabledStyle={{backgroundColor:"#696969"}}
                     />
                 </View>
             </Card>

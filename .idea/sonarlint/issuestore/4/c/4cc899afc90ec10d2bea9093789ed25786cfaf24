@@ -1,3 +1,4 @@
 
-Fjavascript:S1481
-"*Remove unused function 'navigateToSkills'.(òÄöÕ
+`javascript:S1481"8Remove the declaration of the unused 'setUser' variable.(Ùä˜Ãùÿÿÿÿ8´Äªÿ¥/
+]javascript:S1854"5Remove this useless assignment to variable "setUser".(Ùä˜Ãùÿÿÿÿ8´Äªÿ¥/
+Fjavascript:S1481"*Remove unused function 'navigateToSkills'.(òÄöÕ
