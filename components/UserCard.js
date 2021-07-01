@@ -42,7 +42,7 @@ export default function UserCard({ props }) {
             })
             .catch((err)=>{
                 Alert.alert(
-                    "Não ompartilhado.",
+                    "Não compartilhado.",
                     "Não foi possível compartilhar herói.",
                     [
                         { text: "OK", onPress: () => console.log("OK Pressed") }
